@@ -1,0 +1,49 @@
+---
+title: "Data605_Assignment10"
+author: "Mahmud Hasan Al Raji"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Smith is in jail and has 1 dollar; he can get out on bail if he has 8 dollars. A guard agrees to make a series of bets with him. If Smith bets A dollars, he wins A dollars with probability .4 and loses A dollars with probability .6.Find the probability that he wins 8 dollars before losing all of his money if (a) he bets 1 dollar each time (timid strategy). (b) he bets, each time, as much as possible but not more than necessary to bring his fortune up to 8 dollars (bold strategy). (c) Which strategy gives Smith the better chance of getting out of jail?
+
+
+# (a) Smith bets 1 dollar each time (timid strategy):
+
+Ans-a: If Smith bets 1 dollar each time, then he can win 8 dollars in 8 successful bets.
+
+```{r}
+# Given probabilities for a single bet win and a single bet loss
+prob_win <- 0.4
+prob_loss <- 0.6
+
+# Probability of winning 8 successive bets to get 8 dollars before losing all money
+prob_desired <- prob_win ^ 8
+prob_desired
+```
+
+# (b) Smith bets, each time, as much as possible but not more than necessary to bring his fortune up to 8 dollars (bold strategy).
+
+Ans-b: If Smith bets as much as possible but not more than necessary to bring his fortune up to 8 dollars, then we can consider the following stages to get the desired result:
+
+stage-1: Smith has 1 dollar, he should bet 1 dollar to increase his fortune to 2 dollars
+stage-2: Smith has 2 dollars, he should bet 2 dollars to increase his fortune to 4 dollars
+stage-3: Smith has 4 dollars, he should bet 4 dollars to increase his fortune to 8 dollars
+
+Considering stages above, it can be said that Smith must need to win 3 times in a row in order to make 8 dollars. Now, each stage has the probability of winning, p=0.4. So, the desired probability of making bail using this strategy will be p^3.
+
+
+```{r }
+p<-0.4
+prob_desired<-p^3
+prob_desired
+```
+
+# (c) Which strategy gives Smith the better chance of getting out of jail?
+
+Ans-c: It is seen from above that the bold strategy gives Smith a much better chance of getting out of jail, as the probability of winning with this strategy is much higher than with the timid strategy.
+
